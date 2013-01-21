@@ -1,0 +1,182 @@
+<!doctype html>
+
+<html style="height:100%">
+	
+	<head>
+		<meta name="viewport" content="width=device-width,   initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimum-scale=1.0">
+
+		<link rel="stylesheet" href="mh5.css">
+		<link rel="stylesheet" href="colors.css">
+		<link rel="stylesheet" href="css.css">
+       <link href="css/page.css" rel="stylesheet" type="text/css">
+       
+       
+  		<script type="text/javascript" src="jquery.event.swipe.js"></script>
+	    <script type="text/javascript"  src="jquery.mobile-1.2.0.min.js"> </script>
+	    <script type="text/javascript"  src="jquery-1.7.1.min.js"> </script>
+	  <script type="text/javascript"  src="jquery-1.9.0.js"> </script>
+	  
+      
+        <script>
+	       $(document).ready(function() {
+			   
+		
+		   $("#panel").click(function(){
+			$("#cap").fadeIn(1000);
+			$("#search").fadeIn(2000);
+			$("#fav").fadeIn(3000);
+		     });
+
+
+var page_name ;  
+
+$("#search").click(function(){
+$("#search_page").fadeIn('fast');
+page_name = "#search_page" ; 
+});
+
+$("#fav").click(function(){
+$("#fav_page").fadeIn('fast');
+page_name = "#fav_page" ; 
+});
+
+
+
+$(".back_main").click(function()
+{
+$(page_name).fadeOut('fast');	
+});
+
+
+
+
+	             
+        });
+	     </script>
+		
+		
+		
+	</head>
+	
+	
+	
+	<body style="height:100% ; margin:0px">
+	<div style="height:100% ; position:relative ; background-color:#CCCCCC" >
+	
+	
+	<div id="mapContainer" data-role="mapContainer" style="height:100% ; width:100%; position:absolute"></div>
+	
+    
+    <div  style="bottom:55px; left:5px;position:absolute ">
+     <a href="#" id="panel"><img src="MAP_LOGO.png" style="z-index:-1000 ;" /></a>
+    </div>
+  
+  
+  
+   <div id="xtr" style="bottom:140px; left:12px;position:absolute ">
+   
+<img src="MAP_ICON_CAPTURE.png" id="cap" style="position:relative ; display:none ; left:10px; top:0px" width="35" height="39">
+
+<img src="MAP_ICON_SEARCH.png" id="search" style="position:relative; display:none ; left:10px; top:35px" width="35" height="39">
+
+<img src="MAP_ICON_FAVORITES.png" id="fav" style="position:relative; display:none ;left:-10px;top:85px" width="35" height="39">
+       
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  	    <div class="page" id="search_page">
+        	<div class="back_main" ></div>
+        	<div class="page_title"><img src="images/SEARCH_02.png" width="34" height="34"><span>Search</span></div>
+            <div id="nav1"><img src="images/FAVORATES.png" width="36" height="33"></div>
+            <div id="nav2"><img src="images/CAPTURE_03.png" width="30" height="28"></div>
+        	<div class="search">
+            	<div><input placeholder="Search..." name="search" type="text"></div>
+            	<div class="search_button"><img src="images/SEARCH_SMALL.png" width="21" height="22"></div>
+            </div>
+        	<div class="result">
+            	<ul>
+                	<li><span><img src="images/SEARCH_02.png" width="34" height="34"></span><span>Result 1</span></li>
+                    <li><span><img src="images/FAVORATES.png" width="36" height="33"></span><span>Result 2</span></li>
+                    <li><span><img src="images/CAPTURE_03.png" width="30" height="28"></span><span>Result 3</span></li>
+                    <li><span><img src="images/SEARCH_02.png" width="34" height="34"></span><span>Result 4</span></li>
+                    <li><span><img src="images/SEARCH_02.png" width="34" height="34"></span><span>Result 5</span></li>
+                    <li><span><img src="images/SEARCH_02.png" width="34" height="34"></span><span>Result 6</span></li>
+                </ul>
+            </div>
+    	</div>
+  
+  
+  
+  
+          <div class="page"  id="fav_page">
+        	<div class="back_main"></div>
+        	<div class="page_title"><img src="images/FAVORATES.png" width="36" height="33"><span>Favorites</span></div>
+            <div id="nav1"><img src="images/SEARCH_02.png" width="34" height="34"></div>
+            <div id="nav2"><img src="images/CAPTURE_03.png" width="30" height="28"></div>
+        	
+       	  <div class="result">
+            	<ul>
+                	<li><span><img src="images/SEARCH_02.png" width="34" height="34"></span><span>Result 1</span></li>
+                    <li><span><img src="images/FAVORATES.png" width="36" height="33"></span><span>Result 2</span></li>
+                    <li><span><img src="images/CAPTURE_03.png" width="30" height="28"></span><span>Result 3</span></li>
+                    <li><span><img src="images/SEARCH_02.png" width="34" height="34"></span><span>Result 4</span></li>
+                    <li><span><img src="images/SEARCH_02.png" width="34" height="34"></span><span>Result 5</span></li>
+                    <li><span><img src="images/SEARCH_02.png" width="34" height="34"></span><span>Result 6</span></li>
+                </ul>
+            </div>
+    	</div>
+  
+  
+  
+  
+  
+  
+  
+  
+	</div>
+	
+	
+		
+		<script src="js/mh5.js"></script>
+		
+		
+		<script>
+			//nokia.mh5.assetsPath = "http://api.maps.nokia.com/mobile/1.0.0/lib/";
+			nokia.mh5.appId = "CqPZR4Tm7i2_S2VDDONy";
+			nokia.mh5.appCode= "PL4G39vOuXuV3MyWWlPn0Q";
+		
+
+
+			var map = new nokia.mh5.components.Map({
+		
+
+					center: {
+					longitude: 13.3896145,
+					latitude: 52.5166648
+				},
+				zoom: 10,
+				schema: "normal.day.traffic",
+				tracking: true ,
+				mapLogo : false
+
+
+				
+			});
+			
+		
+             document.getElementById("mapContainer").appendChild(map.root);
+		
+		
+	</script>
+
+
+
+	
+
+	</body>
+</html>

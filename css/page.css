@@ -1,0 +1,190 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin: 0px;
+}
+
+.red {
+	outline: thin solid rgba(255,0,0,1);
+}
+
+.green {
+	outline: thin solid rgba(0,255,0,1);
+}
+
+.blue {
+	outline: thin solid rgba(0,0,255,1);
+}
+
+#main {
+	/* [disabled]background-image: url(../images/MY%20LOCATION-SWI-01-DXB-01-13-EN-OPT2A.jpg); */
+	/* [disabled]background-attachment: fixed; */
+	background-repeat: no-repeat;
+	height: 480px;
+	width: 320px;
+}
+.back_main {
+	position: absolute;
+	height: 54px;
+	width: 120px;
+	top: 0px;
+	left: 221px;
+	
+}
+
+
+.page {
+	height: 100%;
+	width: 100%;
+	position:absolute;
+	background-image: url(../images/BACKGROUND.png);
+	background-size:cover;
+	background-repeat:no-repeat ; 
+	display:none;   
+
+}
+
+.page_title {
+	/* [disabled]margin-top: 10px; */
+	position: absolute;
+	left: 10px;
+	top: 10px;
+}
+
+.page_title span {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 24px;
+	color: rgba(255,255,255,1);
+	float: right;
+	margin-left: 10px;
+	margin-top: 4px;
+}
+
+.result {
+	position: absolute;
+	height: 282px;
+	width: 287px;
+	top: 183px;
+	left: 14px;
+	border: medium solid rgba(33,66,45,1);
+	-webkit-border-top-left-radius: 15px;
+	-moz-border-top-left-radius: 15px;
+	border-top-left-radius: 15px;
+	-webkit-border-top-right-radius: 15px;
+	-moz-border-top-right-radius: 15px;
+	border-top-right-radius: 15px;
+	background-color: rgba(66,101,71,1);
+	overflow: hidden;
+}
+
+.result ul {
+	/* [disabled]background-color: rgba(66,101,71,1); */
+	padding: 0px;
+	margin-top: 0px;
+}
+
+.result li {
+	list-style-type: none;
+	height: 37px;
+	width: 100%;
+	border-bottom-width: thin;
+	border-bottom-style: solid;
+	border-bottom-color: rgba(33,66,45,1);
+	padding-top: 2px;
+}
+
+.result li span:first-child {
+	margin-right: 10px;
+	height: 36px;
+	width: 36px;
+	margin-left: 10px;
+	display: table-cell;
+	float: left;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.result li span:last-child {
+	display: table-cell;
+	vertical-align: middle;
+	height: 36px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: large;
+	font-weight: bold;
+	color: rgba(255,255,255,1);
+}
+
+.search {
+	height: 36px;
+	width: 232px;
+	position: absolute;
+	top: 136px;
+	left: 14px;
+	border: thin solid rgba(102,102,102,1);
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-top-radius: 15px;
+	background: #e5e5e5; /* Old browsers */
+	background: -moz-linear-gradient(top,  #e5e5e5 0%, #ffffff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e5e5e5), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #e5e5e5 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #e5e5e5 0%,#ffffff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #e5e5e5 0%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #e5e5e5 0%,#ffffff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+	box-shadow:inset 0px 0px 10px #000000;
+	-webkit-box-shadow:inset 0px 0px 10px #000000;
+	-moz-box-shadow:inset 0px 0px 10px#000000;
+
+}
+
+.search input {
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-color: rgba(255,255,255,0);
+	height: 24px;
+	width: 186px;
+	margin-left: 5px;
+	margin-top: 5px;
+	font-size: 16px;
+}
+
+.search .search_button {
+	/* [disabled]background-color: rgba(255,0,0,1); */
+	height: 36px;
+	width: 36px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	border-left-width: thin;
+	border-left-style: solid;
+	border-left-color: rgba(153,153,153,1);
+	/* [disabled]padding-top: 5px; */
+	/* [disabled]padding-left: 5px; */
+}
+
+.search .search_button img {
+	margin-top: 6px;
+	margin-left: 5px;
+}
+#nav1 {
+	position: absolute;
+	left: 150px;
+	top: 60px;
+	left: 225px;
+}
+#nav2 {
+	position: absolute;
+	left: 275px;
+	top: 95px;
+}
+
+
+
+
+
+
+
