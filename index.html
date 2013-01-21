@@ -146,32 +146,54 @@ $(page_name).fadeOut('fast');
 		
 		
 		<script>
+        /*
 			//nokia.mh5.assetsPath = "http://api.maps.nokia.com/mobile/1.0.0/lib/";
 			nokia.mh5.appId = "CqPZR4Tm7i2_S2VDDONy";
 			nokia.mh5.appCode= "PL4G39vOuXuV3MyWWlPn0Q";
-		
+
 
 
 			var map = new nokia.mh5.components.Map({
-		
-
-					center: {
-					longitude: 13.3896145,
-					latitude: 52.5166648
-				},
-				zoom: 10,
-				schema: "normal.day.traffic",
-				tracking: true ,
-				mapLogo : false
 
 
-				
+			    center: {
+			        longitude: 13.3896145,
+			        latitude: 52.5166648
+			    },
+			    zoom: 10,
+			    schema: "normal.day.traffic",
+			    tracking: true,
+			    mapLogo: false,
+			    listeners: {
+			        poiclick: function (e) {
+			            //to prevent opening the default infobubble
+			            e.preventDefault();
+			        }
+			    }
+
+
+
 			});
 			
-		
+		*/
+		    var map = nokia.mh5.app.embed({ "appId": "demo_wwzrmoloHAFVvyW", "appCode": "Vgl_08RQWnjJo92Lw1F_uQ",
+		        "configuration": { "map": { "infobubble": false}, "details": { "images": false, "ownerContent": false, "reviews": false, "guides": false, "actions": null}
+		        }
+		    });
+
+
+		    
              document.getElementById("mapContainer").appendChild(map.root);
-		
-		
+          /*   var pois = [{ longitude: -58.4, latitude: -34.6, name: "Name 1" },
+                    { longitude: -58.45, latitude: -34.6, name: "Name 2"}];
+
+             new nokia.mh5.components.InfoBubble(pois[0], { content: ["title"] }, function (infobubbleImage) {
+                 map.createPoi(infobubbleImage, pois[0]);
+             });
+             new nokia.mh5.components.InfoBubble(pois[1], { content: ["title"] }, function (infobubbleImage) {
+                 map.createPoi(infobubbleImage, pois[1]);
+             });
+		*/
 	</script>
 
 
