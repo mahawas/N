@@ -16,42 +16,140 @@
 	    <script type="text/javascript"  src="jquery-1.7.1.min.js"> </script>
 	  <script type="text/javascript"  src="jquery-1.9.0.js"> </script>
 	  
+      <script>
+          var search;
+          function AddSearchControl() {
+              if (search != null)
+                  return;
+              search = new nokia.mh5.components.Search({
+
+
+                  input: {
+                      placeholder: "Search...",
+                      listeners: {
+                          focus: function (e) {
+                              //my focus handler
+                          }
+                      }
+                  },
+                  listeners: {
+                      beforesearch: function (e) {
+                          //my beforesearch handler
+                      },
+                      success: function (data, requestStatus, requestId) {
+                          var i, len, locations, marker, resultSet;
+                          locations = data.data.results;
+                          //var locations = data.results.items;
+                          //console.log();
+
+
+
+                          for (i = 0, len = locations.length; i < len; i++) {
+                              console.log(locations[i]);
+
+
+                          }
+
+                          //Add code to return back to main page
+                          /*
+                          $("#panel").fadeIn('fast');
+                          page_name = "#panel";
+                          */
+                          detailComponent = new nokia.mh5.components.PlaceDetails({
+                              place: {
+                                  placeId: locations[0].placeId
+                              },
+                              customContent: [{
+                                  name: "myContent",
+                                  before: "summary"
+                              }, {
+                                  name: "myAnotherContent",
+                                  after: "sdddummary"
+                                  
+                              }],
+                              ownerContent: null,
+                              guides: null,
+                              reviews: null,
+                              actions: {
+                                  website: null,
+                                  dial: null,
+                                  share: null,
+                                  route: null
+                              },
+                              listeners: {
+                                  nearby: function (e) {
+                                      console.log(e);
+                                      e.preventDefault()
+                                  }
+                                  /*update: function (e) {
+                                  console.log("Up" + e);
+                                  console.log("Up"+e);
+                                  this.myContent.innerHTML = e.data;
+                                  }*/
+                              }
+                          });
+                          mapContainer.firstChild.appendChild(detailComponent.root);
+
+
+                      },
+                      error: function (e) {
+                          alert("error");
+                      },
+                      clear: function (e) {
+                          //my clear handler
+                      }
+                  },
+                  parameters: {
+                      limit: 25,
+                      center: function () {
+
+                          return map.center;
+                      },
+                      box: function () {
+                          return map.box;
+                      }
+                  }
+              });
+              //document.getElementById("searchcon").appendChild(search.root);
+              document.getElementById("searchcon").appendChild(search.root);
+          }
+            </script>
       
         <script>
-	       $(document).ready(function() {
-			   
-		
-		   $("#panel").click(function(){
-			$("#cap").fadeIn(1000);
-			$("#search").fadeIn(2000);
-			$("#fav").fadeIn(3000);
-		     });
+            $(document).ready(function () {
 
 
-var page_name ;  
-
-$("#search").click(function(){
-$("#search_page").fadeIn('fast');
-page_name = "#search_page" ; 
-});
-
-$("#fav").click(function(){
-$("#fav_page").fadeIn('fast');
-page_name = "#fav_page" ; 
-});
+                $("#panel").click(function () {
+                    $("#cap").fadeIn(1000);
+                    $("#search").fadeIn(2000);
+                    $("#fav").fadeIn(3000);
+                });
 
 
+                var page_name;
 
-$(".back_main").click(function()
-{
-$(page_name).fadeOut('fast');	
-});
+                $("#search").click(function () {
+                    $("#search_page").fadeIn('fast');
+                    page_name = "#search_page";
+                    AddSearchControl();
+                });
+
+                $("#fav").click(function () {
+                    $("#fav_page").fadeIn('fast');
+                    page_name = "#fav_page";
+                });
 
 
 
+                $(".back_main").click(function () {
+                    $(page_name).fadeOut('fast');
+                });
 
-	             
-        });
+
+
+
+
+            });
 	     </script>
 		
 		
@@ -84,7 +182,7 @@ $(page_name).fadeOut('fast');
     </div>
   
   
-  
+  <script src="js/mh5.js"></script>
   
   
   
@@ -94,11 +192,12 @@ $(page_name).fadeOut('fast');
         	<div class="page_title"><img src="images/SEARCH_02.png" width="34" height="34"><span>Search</span></div>
             <div id="nav1"><img src="images/FAVORATES.png" width="36" height="33"></div>
             <div id="nav2"><img src="images/CAPTURE_03.png" width="30" height="28"></div>
-        	<div class="search">
-            	<div><input placeholder="Search..." name="search" type="text"></div>
-            	<div class="search_button"><img src="images/SEARCH_SMALL.png" width="21" height="22"></div>
+            
+        	<div id="searchcon"class="search" >
+            	<!--div><input id="searchin" placeholder="Search..." name="search" type="text"></div>
+            	<div class="search_button"><img src="images/SEARCH_SMALL.png" width="21" height="22"></div-->
             </div>
-        	<div class="result">
+        	<!--div class="result">
             	<ul>
                 	<li><span><img src="images/SEARCH_02.png" width="34" height="34"></span><span>Result 1</span></li>
                     <li><span><img src="images/FAVORATES.png" width="36" height="33"></span><span>Result 2</span></li>
@@ -107,7 +206,7 @@ $(page_name).fadeOut('fast');
                     <li><span><img src="images/SEARCH_02.png" width="34" height="34"></span><span>Result 5</span></li>
                     <li><span><img src="images/SEARCH_02.png" width="34" height="34"></span><span>Result 6</span></li>
                 </ul>
-            </div>
+            </div-->
     	</div>
   
   
@@ -142,7 +241,7 @@ $(page_name).fadeOut('fast');
 	
 	
 		
-		<script src="js/mh5.js"></script>
+		
 		
 		
 		<script>
@@ -286,7 +385,7 @@ $(page_name).fadeOut('fast');
 			nokia.mh5.appId = "CqPZR4Tm7i2_S2VDDONy";
 			nokia.mh5.appCode= "PL4G39vOuXuV3MyWWlPn0Q";
 
-
+			var detailComponent;
 
 			var map = new nokia.mh5.components.Map({
 			    infobubble: {
@@ -303,7 +402,7 @@ $(page_name).fadeOut('fast');
 			            }
 			        }
 			    },
-			    
+
 			    center: {
 			        longitude: 55.3095,
 			        latitude: 25.2697
@@ -316,7 +415,14 @@ $(page_name).fadeOut('fast');
 			        "poiclick": function (e) { },
 			        "mapmovestart": function (e) { },
 			        "mapmoveend": function (e) { },
-			        "mapclick": function (e) { alert(map.pointToGeo(e)); },
+			        "mapclick": function (e) {
+
+			            if (detailComponent != null) {
+			                mapContainer.firstChild.removeChild(detailComponent.root);
+			                detailComponent = null;
+			            }
+			            //alert(map.pointToGeo(e));
+			        },
 			        "mapdblclick": function (e) { },
 			        "maplongpress": function (e) { },
 			        "maptrackingstart": function (e) { },
@@ -327,85 +433,8 @@ $(page_name).fadeOut('fast');
 
 			});
 
-			var search = new nokia.mh5.components.Search({
-
-
-			    input: {
-			        placeholder: "Search...",
-			        listeners: {
-			            focus: function (e) {
-			                //my focus handler
-			            }
-			        }
-			    },
-			    listeners: {
-			        beforesearch: function (e) {
-			            //my beforesearch handler
-			        },
-			        success: function (data, requestStatus, requestId) {
-			            var i, len, locations, marker, resultSet;
-			            locations = data.data.results;
-			            //var locations = data.results.items;
-			            //console.log();
-
-
-
-			            for (i = 0, len = locations.length; i < len; i++) {
-			                console.log(locations[i]);
-
-
-			            }
-
-
-			            var detailComponent = new nokia.mh5.components.PlaceDetails({
-			                place: {
-			                    placeId: locations[0].placeId
-			                },
-			                customContent: [{
-			                    name: "myContent",
-			                    before: "summary"
-			                }, {
-			                    name: "myAnotherContent",
-			                    after: "summary",
-			                    innerHTML: "My static content"
-			                }],
-			                actions: {
-			                    share: null,
-			                    route: null
-			                },
-			                listeners: {
-			                    /*update: function (e) {
-			                        console.log("Up" + e);
-			                        console.log("Up"+e);
-			                        this.myContent.innerHTML = e.data;
-			                    }*/
-			                }
-			            });
-			            mapContainer.appendChild(detailComponent.root);
-
-
-			        },
-			        error: function (e) {
-			            alert("error");
-			        },
-			        clear: function (e) {
-			            //my clear handler
-			        }
-			    },
-			    parameters: {
-			        limit: 25,
-			        center: function () {
-
-			            return map.center;
-			        },
-			        box: function () {
-			            return map.box;
-			        }
-			    }
-			});
-			//document.getElementById("mapContainer").appendChild(search.root);
-			mapContainer.appendChild(search.root);  
-
+			
+		
             /*
 			var map = nokia.mh5.app.embed({ "appId": "demo_wwzrmoloHAFVvyW", "appCode": "Vgl_08RQWnjJo92Lw1F_uQ",
 			    infoBubble: {
